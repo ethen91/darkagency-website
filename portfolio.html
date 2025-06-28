@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Dark Agency</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    body.light-theme {
+      background-color: #fff !important;
+      color: #1a202c;
+    }
+    body.light-theme .text-white, body.light-theme .navbar-link, body.light-theme .navbar-title {
+      color: #1a202c !important;
+    }
+    body.light-theme .bg-gray-900, body.light-theme .bg-gray-800 {
+      background-color: #f1f5f9 !important;
+    }
+  </style>
+  <script>
+    function setTheme(theme) {
+      if (theme === 'light') {
+        document.body.classList.add('light-theme');
+      } else {
+        document.body.classList.remove('light-theme');
+      }
+      const btn = document.getElementById('theme-toggle-btn');
+      if (btn) {
+        btn.textContent = document.body.classList.contains('light-theme') ? '🌙 Dark Mode' : '☀️ Light Mode';
+      }
+    }
+    function toggleTheme() {
+      const isLight = !document.body.classList.contains('light-theme');
+      setTheme(isLight ? 'light' : 'dark');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+    window.onload = function() {
+      const theme = localStorage.getItem('theme') || 'light';
+      setTheme(theme);
+    }
+  </script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+  <nav class="flex justify-between items-center p-6 bg-gray-800 shadow-md">
+    <h1 class="text-2xl font-bold text-blue-400">DarkAgency</h1>
+    <ul class="hidden md:flex space-x-8 text-sm uppercase tracking-wide">
+      <li><a href="index.html" class="navbar-link hover:text-blue-400">Home</a></li>
+      <li><a href="services.html" class="navbar-link hover:text-blue-400">Services</a></li>
+      <li><a href="portfolio.html" class="navbar-link hover:text-blue-400 text-blue-400">Portfolio</a></li>
+      <li><a href="contact.html" class="navbar-link hover:text-blue-400">Contact</a></li>
+      <li><a href="about.html" class="navbar-link hover:text-blue-400">About Us</a></li>
+    </ul>
+    <button id="theme-toggle-btn" onclick="toggleTheme()" class="ml-6 px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white font-semibold transition text-sm focus:outline-none">☀️ Light Mode</button>
+  </nav>
+  <section class="py-20 px-6 bg-gray-800 min-h-[60vh]">
+    <div class="max-w-6xl mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-12 text-white">Our Portfolio</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="bg-gray-900 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+          <h4 class="text-xl font-semibold mb-2 text-blue-400">ML Stock Predictor</h4>
+          <p class="text-gray-400">A machine learning model that predicts stock prices using Python and scikit-learn.</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+          <h4 class="text-xl font-semibold mb-2 text-blue-400">Reverse Engineering CTF</h4>
+          <p class="text-gray-400">Solved advanced binary challenges in CTF competitions, focusing on reverse engineering and security.</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+          <h4 class="text-xl font-semibold mb-2 text-blue-400">C++ Game Prototype</h4>
+          <p class="text-gray-400">Designed and built a 2D platformer game engine in C++ with custom physics and AI.</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+          <h4 class="text-xl font-semibold mb-2 text-blue-400">Personal Portfolio Website</h4>
+          <p class="text-gray-400">This very site! Built with HTML, Tailwind CSS, and a custom dark/light mode switcher.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="bg-gray-900 py-10 text-center text-sm text-gray-500">
+    <p>© 2025 DarkAgency. All rights reserved.</p>
+  </footer>
+</body>
+</html>
